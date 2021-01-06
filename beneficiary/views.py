@@ -14,7 +14,6 @@ def all_beneficiary(request):
     
     return render(request , 'bene_list.html',context)
 
-
 def beneficiary_detail(request,id):
     
     bene_detail = Beneficiary.objects.get(id=id)
