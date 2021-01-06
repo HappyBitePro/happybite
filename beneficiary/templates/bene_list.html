@@ -1,0 +1,10 @@
+{% for bene in bene_list  %}
+    {{bene}}
+   
+    
+    
+    
+    <li><a href="{% url 'beneficiary:bene_detail' bene.id  %}"> view {{ bene }} detail</a></li>
+{% endfor %}
+
+<button><a href="{% url 'beneficiary:add_beneficiary' %}">Add beneficiary</a></button>
