@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .forms import SignupForm, CharityUserForm, CharityProfileForm, mydonations, DonorUserForm, DonorProfileForm
 from .models import CharityProfile, DonorProfile
@@ -37,7 +37,8 @@ def signup(request):
 
 def CharityProfileView(request):
     Charity_Profile = CharityProfile.objects.get(user=request.user)
-    return render(request, 'charityprofile.html', {'profile': Charity_Profile})
+    donation = Donation.objects.filter(charity_id=Charity_Profile.id)
+    return render(request, 'charityprofile.html', {'profile': Charity_Profile , 'donation': donation})
 
 
 def CharityProfileEdit(request):
@@ -62,20 +63,8 @@ def CharityProfileEdit(request):
 
 
 def CharityDonationView(request):
-    print("----------------------")
-    print(request)
     y = Donation.objects.filter(charity_id=request.user.id)
-    print("y  ---", y)
-    print('--------------------')
-
-    x = CharityProfile.objects.all()  # .get(request.user.charity.Charity_Donations_list.Donor.id)
-    # CharityProfile = request.user.charity.Charity_Donations_list
-    # Charity.objects.filter(Charity_Donations_list=request.user.charity.Charity_Donations_list)
-    "charity_id", "charity_id", ""
-    # (request.user.id=Charity.Charity_Donations_list.id)
-    print("$$$$$$$$$$$$$$$$$$$$$$$$$")
-    print(x)
-
+    x = CharityProfile.objects.all()
     return render(request, 'mydonations.html', {'x': x, 'y': y})
 
 
@@ -105,7 +94,15 @@ def DonorProfileEdit(request):
                   {'userform': DonorUserForm, 'profileform': DonorProfileForm})
 
 
+def DonorDonationView(request):
+    print(request.user.id)
+    donar = get_object_or_404(DonorProfile, user=request.user)
+    donar_Donation = Donation.objects.filter(donor_id=donar.id)
 
-
-
-
+    return render(
+        request,
+        'donordonation.html',
+        {
+            'donar':donar ,
+            'donar_Donation':donar_Donation ,
+        } )

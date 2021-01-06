@@ -1,41 +1,44 @@
 from django.shortcuts import render
+
+from .forms import DonationForm
 from .models import Donation
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+from .models import CharityProfile, DonorProfile
+
 
 # Create your views here.
 
 
+def ViewDonationlist(request):
+    donation_list = Donation.objects.filter(Available=True)
 
-
-
-
-def donation_list(request):
-    donation_list = Donation.objects.filter(Available = True)
-
-    context ={
-        'donations' : donation_list ,
+    context = {
+        'donations': donation_list,
     }
-    return render(request ,'donation/donation_list.html' ,context )
+    return render(request, 'donation/donation_list.html', context)
 
 
-
-
-
-def donation_detail(request , Slug):
+def ViewDonationDetils(request, Slug):
     donation_detail = Donation.objects.filter(Slug=Slug)
 
-    context ={
-        'donation' : donation_detail ,
+    context = {
+        'donation': donation_detail,
     }
-    return render(request ,'donation/donation_detail.html' ,context )
-
-def add ():
-    pass
+    return render(request, 'donation/donation_detail.html', context)
 
 
 
-def edit ():
-    pass
 
 
-def delete():
-    pass# from donar
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,10 @@
 <h2>chariy profile</h2>
 
 
-{{profile}}
+{{ profile }}
+<hr>
+{% for foo in donation %}
+    {{ foo }} ## <a href="{% url 'donation:DeleteDonationCharity' foo.id %}"> delete </a>
+    <hr>
+{% endfor %}
+

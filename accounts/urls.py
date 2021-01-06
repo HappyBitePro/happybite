@@ -7,11 +7,12 @@ app_name = 'accounts'
 
 
 urlpatterns = [
+
+
+
+
+
     path('signup', views.signup, name='signup'),
-
-
-
-
 
 
 
@@ -32,20 +33,12 @@ urlpatterns = [
     path('CharityProfile/edit',views.CharityProfileEdit , name='CharityProfileEdit'),
 
     path('mydonations', views.CharityDonationView, name='mydonations'),
-
+    path('DonorDonation', views.DonorDonationView, name='DonorDonation'),
 
 
 
     path('donorProfile', views.DonorProfileView, name='DonorProfileView'),
     path('donorProfile/edit',views.DonorProfileEdit , name='DonorProfileEdit'),
-
-
-
-
-
-
-
-
 
 
 ]

@@ -6,4 +6,4 @@ class DonationForm(forms.ModelForm):
     class Meta:
         model = Donation
         fields = '__all__'
-        exclude = ('Slug' ,)
+        exclude = ('Slug' ,'donor','charity')
