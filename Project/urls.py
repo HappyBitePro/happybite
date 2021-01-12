@@ -21,4 +21,5 @@ urlpatterns = [
     path('donation/', include('donation.urls', namespace='donation')),
     path('beneficiary/', include('beneficiary.urls', namespace='beneficiary')),
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls'))
 ]

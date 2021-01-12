@@ -9,6 +9,8 @@ from donation.models import Donation
 
 # Create your views here.
 
+
+
 def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
@@ -38,7 +40,7 @@ def signup(request):
 def CharityProfileView(request):
     Charity_Profile = CharityProfile.objects.get(user=request.user)
     donation = Donation.objects.filter(charity_id=Charity_Profile.id)
-    return render(request, 'charityprofile.html', {'profile': Charity_Profile , 'donation': donation})
+    return render(request, 'charityprofile.html', {'profile': Charity_Profile, 'donation': donation})
 
 
 def CharityProfileEdit(request):
@@ -65,7 +67,7 @@ def CharityProfileEdit(request):
 def CharityDonationView(request):
     y = Donation.objects.filter(charity_id=request.user.id)
     x = CharityProfile.objects.all()
-    return render(request, 'mydonations.html', {'x': x, 'y': y})
+    return render(request, 'CharityDonation.html', {'x': x, 'y': y})
 
 
 def DonorProfileView(request):
@@ -95,7 +97,6 @@ def DonorProfileEdit(request):
 
 
 def DonorDonationView(request):
-    print(request.user.id)
     donar = get_object_or_404(DonorProfile, user=request.user)
     donar_Donation = Donation.objects.filter(donor_id=donar.id)
 
@@ -103,6 +104,7 @@ def DonorDonationView(request):
         request,
         'donordonation.html',
         {
-            'donar':donar ,
-            'donar_Donation':donar_Donation ,
-        } )
+            'donar':donar,
+            'donar_Donation':donar_Donation,
+        }
+                )

@@ -5,7 +5,6 @@ from django.urls import reverse
 from .models import DonorProfile
 
 
-
 def AddDonationDonor(request):
     donor = get_object_or_404(DonorProfile, user=request.user)
 
@@ -41,7 +40,7 @@ def EditDonationDonor(request, id):
     return render(request, 'donation/AddDonation.html', context)
 
 
-def DeleteDonationDonor(request , id ):
+def DeleteDonationDonor(request, id):
     donor = get_object_or_404(DonorProfile, user=request.user)
     donation = get_object_or_404(Donation, id=id).delete()
     return redirect('accounts:DonorDonation')
