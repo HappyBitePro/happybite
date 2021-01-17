@@ -14,5 +14,5 @@ urlpatterns = [
     path('edit/<int:id>', DonorViews.EditDonationDonor, name='EditDonationDonor'),
     path('deleteDonor/<int:id>', DonorViews.DeleteDonationDonor, name='DeleteDonationDonor'),
     path('add/', DonorViews.AddDonationDonor, name='AddDonationDonor'),
-
+    path('map/<int:id>',views.mapDonation,name='map'),
 ]

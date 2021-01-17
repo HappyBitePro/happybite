@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'accounts',
     'beneficiary',
     'donation',
-    'rest_framework',
+    #'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',

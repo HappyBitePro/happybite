@@ -18,16 +18,20 @@ Deliver_Type = (
 
 
 class Donation(models.Model):
-    donor = models.ForeignKey(DonorProfile, on_delete=models.CASCADE, blank=True, null=True)
-    charity = models.ForeignKey(CharityProfile, on_delete=models.CASCADE, blank=True, null=True)
-    Name = models.CharField(max_length=20, )
-    Slug = models.SlugField(blank=True, null=True)
-    Food_Type = models.CharField(max_length=20, )
+    donor        = models.ForeignKey(DonorProfile, on_delete=models.CASCADE, blank=True, null=True)
+    charity      = models.ForeignKey(CharityProfile, on_delete=models.CASCADE, blank=True, null=True)
+    Name         = models.CharField(max_length=20, )
+    Slug         = models.SlugField(blank=True, null=True)
+    Food_Type    = models.CharField(max_length=20, )
     Packing_Type = models.CharField(max_length=15, choices=Packing_Type)
     Deliver_Type = models.CharField(max_length=15, choices=Deliver_Type)
-    Donate_Date = models.DateTimeField(blank=True, default=datetime.datetime.now)
-    Expiry_Date = models.DateTimeField()
-    Available = models.BooleanField(default=True)
+    Donate_Date  = models.DateTimeField(blank=True, default=datetime.datetime.now)
+    Expiry_Date  = models.DateTimeField()
+    Available    = models.BooleanField(default=True)
+    lang         = models.FloatField(max_length=15)
+    lat          = models.FloatField(max_length=15)
+
+
 
     def save(self, *args, **kwargs):
         if not self.Slug:
