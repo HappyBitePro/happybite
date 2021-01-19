@@ -72,7 +72,8 @@ def CharityDonationView(request):
 
 def DonorProfileView(request):
     Donor_Profile = DonorProfile.objects.get(user=request.user)
-    return render(request, 'donorprofile.html', {'profile': DonorProfile})
+
+    return render(request, 'donorprofile.html', {'profile': Donor_Profile})
 
 
 def DonorProfileEdit(request):

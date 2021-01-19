@@ -1,7 +1,7 @@
 
 {{ request.user }}    <br>
 {% for donation in donations %}
-   # <a href="{% url 'donation:donation_detail' donation.Slug %}">{{donation.Name}}</a>
+   # <a href="{% url 'donation:donation_detail' donation.id %}">{{donation.Name}}</a>
    # <a href="{% url 'donation:ReserveDonation' donation.id %}"> resarv </a>
 
     <br>

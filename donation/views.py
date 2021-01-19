@@ -19,8 +19,8 @@ def ViewDonationlist(request):
     return render(request, 'donation/donation_list.html', context)
 
 
-def ViewDonationDetils(request, Slug):
-    donation_detail = Donation.objects.filter(Slug=Slug)
+def ViewDonationDetils(request, id):
+    donation_detail = Donation.objects.filter(id=id)
 
     context = {
         'donation': donation_detail,

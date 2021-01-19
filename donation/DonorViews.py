@@ -9,11 +9,11 @@ def AddDonationDonor(request):
     donor = get_object_or_404(DonorProfile, user=request.user)
 
     if request.method == 'POST':
-        form = DonationForm(request.POST, request.FILES)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.donor = donor
-            form.save()
+        donation = DonationForm(request.POST, request.FILES)
+        if donation.is_valid():
+            donation = donation.save(commit=False)
+            donation.donor = donor
+            donation.save()
             return redirect('donation:donation_list')
     else:
         form = DonationForm()
