@@ -36,15 +36,12 @@ def donor_profile_update_api(request, id):
     except DonorProfile.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    users = request.user
-    if Donor_Profile.author != users:
-        return Response({'response':'you dont have pirmission'})
     if request.method == 'PUT':
         serializer_profile_user = Donor_Profile_Serializer(Donor_Profile, data=request.data)
         data = {}
         if serializer_profile_user.is_valid():
             serializer_profile_user.save()
-            data["sss"] = "sadddddd"
+            data["response"] = "donor profile updated"
 
             return Response(data=data)
         return Response(serializer_profile_user.errors, status=status.HTTP_404_NOT_FOUND)
@@ -63,15 +60,12 @@ def user_update(request,id):
         users = User.objects.get(id=id)
     except User.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    userss = request.user
-    if users.author != userss:
-        return Response({'response': 'you dont have pirmission'})
     if request.method == 'PUT':
         ser = Donor_User_Serializer(users, data=request.data)
         data = {}
         if ser.is_valid():
             ser.save()
-            data['response'] = "user acc update"
+            data['response'] = "user profile updated"
             return Response(data=data)
         return Response(ser.errors, status=status.HTTP_400_BAD_REQUEST)
 

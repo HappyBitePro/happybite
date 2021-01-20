@@ -26,7 +26,7 @@ class Donor_User_Serializer(serializers.ModelSerializer):
 class Donor_Profile_Serializer(serializers.ModelSerializer):
     class Meta:
         model = DonorProfile
-        fields = ['Donar_Employment_Type', 'Donor_Phone_Number']
+        fields = ['Donar_Employment_Type', 'Donor_Phone_Number' ,'address']
 
 
 class Signup_Serializer(serializers.ModelSerializer):

@@ -28,17 +28,6 @@ def ViewDonationDetils(request, id):
     return render(request, 'donation/donation_detail.html', context)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def mapDonation(request, id):
+    donationPlace = Donation.objects.get(id=id)
+    return render(request, 'maps/map.html', {'card': donationPlace})

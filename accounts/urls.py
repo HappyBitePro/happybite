@@ -37,14 +37,12 @@ urlpatterns = [
 
 
 
-    path('api/signup', api.signup_user, name='signup_user'),#
-    path('api/login', obtain_auth_token, name='login'),#
 
-    path('api/donorprofile/<int:id>', api.donor_profile_api, name='donorprofileapi'),#
-    path('api/donorprofileupdate/<int:id>', api.donor_profile_update_api, name='donorprofileedit'),
-
-    path('api/userprofile/<int:id>', api.user_profile, name='userprofile'),#
+    path('api/signup', api.signup_user, name='signup_user'),  #
+    path('api/login', obtain_auth_token, name='login'),  #
+    path('api/donorprofileupdate/<int:id>', api.donor_profile_update_api, name='donorprofileedit'),  #
     path('api/userupdate/<int:id>', api.user_update, name='userupdate'),
-
-    path('api/donordonation/<int:id>', api.donor_donation_api, name='donordonation'),
+    path('api/donorprofile/<int:id>', api.donor_profile_api, name='donorprofileapi'),  #
+    path('api/userprofile/<int:id>', api.user_profile, name='userprofile'),  #
+    path('api/donordonation/<int:id>', api.donor_donation_api, name='donordonation'), #
 ]

@@ -12,7 +12,7 @@ Packing_Type = (
 )
 
 Deliver_Type = (
-    (' Delivery', ' Delivery'),
+    ('Delivery', 'Delivery'),
     ('No Delivery', 'No Delivery'),
 )
 
@@ -28,6 +28,9 @@ class Donation(models.Model):
     Donate_Date = models.DateTimeField(blank=True, default=datetime.datetime.now, editable=False)
     Expiry_Date = models.DateTimeField()
     Available = models.BooleanField(default=True)
+
+    lang = models.FloatField(max_length=15,null=True)
+    lat = models.FloatField(max_length=15,null=True)
 
     def save(self, *args, **kwargs):
         if not self.Slug:

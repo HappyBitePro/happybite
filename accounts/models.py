@@ -33,7 +33,7 @@ class DonorProfile(models.Model):
 
     Donar_Employment_Type = models.CharField(max_length=30)
     Donor_Phone_Number = PhoneNumberField()
-
+    address = models.CharField(max_length=30)
     # location
 
     def save(self, *args, **kwargs):

@@ -48,7 +48,7 @@ def donation_update_api(request, id):
         data = {}
         if serializer.is_valid():
             serializer.save()
-            data["sss"] = "sadddddd"
+            data['response'] = "donation data updated"
             return Response(data=data)
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
