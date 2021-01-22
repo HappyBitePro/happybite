@@ -4,14 +4,16 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 
 
-
+def image_upload(instance,filename):
+    
+    image_name , extension = filename.split(".")
+    return "{0} ,{1}".format(instance.id,extension)
 
 class CharityProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     Charity_Slug = models.SlugField(blank=True, null=True)
     Charity_Phone_Number = PhoneNumberField()
-
-    # Charity_Location
+    license = models.ImageField(upload_to=image_upload)
     # Charity_license img
 
 

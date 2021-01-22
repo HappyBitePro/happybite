@@ -5,6 +5,8 @@
     
     
     <li><a href="{% url 'beneficiary:bene_detail' bene.id  %}"> view {{ bene }} detail</a></li>
+    <li><a href="{% url 'beneficiary:edit_beneficiary' bene.id  %}"> edit {{ bene }} detail</a></li>
+    <li><a href="{% url 'beneficiary:delete_beneficiary' bene.id  %}"> delete {{ bene }} </a></li>
 {% endfor %}
 
 <button><a href="{% url 'beneficiary:add_beneficiary' %}">Add beneficiary</a></button>

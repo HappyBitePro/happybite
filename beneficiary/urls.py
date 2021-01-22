@@ -9,4 +9,6 @@ urlpatterns = [
     path('',views.all_beneficiary, name = 'bene_list') ,
     path('<int:id>',views.beneficiary_detail, name = 'bene_detail') ,
     path('add',views.add_beneficiary, name = 'add_beneficiary') ,
+    path('<int:id>',views.edit_beneficiary, name = 'edit_beneficiary') ,
+    path('<int:id>',views.delete_beneficiary, name = 'delete_beneficiary') ,
 ]
