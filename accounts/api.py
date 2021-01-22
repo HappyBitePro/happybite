@@ -7,7 +7,7 @@ from .serializers import *
 #from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 
-
+'''
 @api_view(['GET'])
 def donor_profile_api(request, id):
     Donor_Profile = DonorProfile.objects.get(id=id)
@@ -49,4 +49,4 @@ def donor_profile_edit_api(request, id):
         serializer_user = DonorUserForm(userform, many=False).data
         serializer_profile_user = DonorProfileForm(profileform, many=False).data
 
-    return Response({'serializer_profile_user': serializer_profile_user, 'serializer_user': serializer_user})
+    return Response({'serializer_profile_user': serializer_profile_user, 'serializer_user': serializer_user}) '''

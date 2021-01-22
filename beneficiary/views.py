@@ -3,9 +3,10 @@ from .models import Beneficiary
 from .form import bene_form
 from accounts.models import CharityProfile
 
+
 def all_beneficiary(request):
-      
-    bene_list = Beneficiary.objects.all()
+    
+    bene_list = CharityProfile.objects.filter(user = request.user)
     
 
     context = {
@@ -28,35 +29,36 @@ def beneficiary_detail(request,id):
     return render(request , 'bene_detail.html' , context)
 
 def add_beneficiary(request):
-    bene = get_object_or_404(CharityProfile , user = request.user)
-
     if request.method == "POST": 
         form = bene_form(request.POST) 
         if form.is_valid() :
             myform = form.save(commit=False) #dont  save
-            myform.save()
+            #myform.user = request.user
+            #myform.save()
             return redirect('beneficiary:bene_list')
             
     else : 
         form = bene_form()
     
-        return render(request , 'add_bene.html' , {'form' : form } )
+    return render(request , 'add_bene.html' , {'form' : form } )
 
 
 def edit_beneficiary(request,id):
-      bene = get_object_or_404(Beneficiary,id=id) 
+      bene_profile = get_object_or_404(Beneficiary,id = id) 
       if request.method == 'POST' :
-          form = bene_form(request.POST, instance=bene) 
+          form = bene_form(request.POST, instance=bene_profile) 
           if form.is_valid(): 
-            new_form = form
+            new_form = form.save(commit=False)
+            new_form.user = request.user
             new_form.save()
             return redirect('beneficiary:bene_list')
       else : 
-        form = bene_form(instance=bene) 
+        form = bene_form(instance=bene_profile) 
 
       return render(request , 'add_bene.html',{'form':form })
 
 def delete_beneficiary(request,id):
-    bene = get_object_or_404(Beneficiary , id = id ) .delete()
+    bene = Beneficiary.objects.get(Beneficiary , id = id )
+    bene.delete()
     return render ('beneficiary:bene_list')
     

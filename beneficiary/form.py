@@ -7,4 +7,5 @@ class bene_form(forms.ModelForm):
     class Meta:
         model = Beneficiary #the model name
         #model columns that we want to view in form
-        fields = ['name','phone_number','family_memebers_numbers','address','work_status','salary']
+        fields = '__all__'
+        exclude = ('user',)

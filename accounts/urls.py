@@ -45,9 +45,9 @@ urlpatterns = [
 
 
 
-    path('api/donorprofile/<int:id>', api.donor_profile_api, name='donorprofileapi'),
-    path('api/donordonation/<int:id>', api.donor_donation_api, name='donorprofileapi'),
+    #path('api/donorprofile/<int:id>', api.donor_profile_api, name='donorprofileapi'),
+    #path('api/donordonation/<int:id>', api.donor_donation_api, name='donorprofileapi'),
 
-    path('api/donorprofile/edit/<int:id>', api.donor_profile_edit_api, name='donorprofileedit'),
+    #path('api/donorprofile/edit/<int:id>', api.donor_profile_edit_api, name='donorprofileedit'),
 
 ]
