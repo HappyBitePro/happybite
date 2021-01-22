@@ -57,4 +57,6 @@ def edit_beneficiary(request,id):
       return render(request , 'add_bene.html',{'form':form })
 
 def delete_beneficiary(request,id):
-    pass
+    bene = get_object_or_404(Beneficiary , id = id ) .delete()
+    return render ('beneficiary:bene_list')
+    
