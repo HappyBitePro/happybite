@@ -5,7 +5,7 @@ from accounts.models import CharityProfile
 
 class Beneficiary(models.Model):
     
-    user = models.ForeignKey(CharityProfile , on_delete=models.CASCADE)
+    #user = models.ForeignKey( CharityProfile, on_delete=models.CASCADE)
     name = models.CharField( max_length=25)
     phone_number = PhoneNumberField(blank = True)
     family_memebers_numbers = models.IntegerField(default=1)

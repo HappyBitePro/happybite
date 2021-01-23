@@ -6,14 +6,8 @@ from accounts.models import CharityProfile
 
 def all_beneficiary(request):
     
-    bene_list = CharityProfile.objects.filter(user = request.user)
-    
-
-    context = {
-        
-        'bene_list' : bene_list , 
-    }
-    
+    bene_list = Beneficiary.objects.all()
+    context = {'bene_list' : bene_list , }
     return render(request , 'bene_list.html',context)
 
 def beneficiary_detail(request,id):
@@ -33,8 +27,8 @@ def add_beneficiary(request):
         form = bene_form(request.POST) 
         if form.is_valid() :
             myform = form.save(commit=False) #dont  save
-            #myform.user = request.user
-            #myform.save()
+            myform.user = request.user
+            myform.save()
             return redirect('beneficiary:bene_list')
             
     else : 
@@ -58,7 +52,7 @@ def edit_beneficiary(request,id):
       return render(request , 'add_bene.html',{'form':form })
 
 def delete_beneficiary(request,id):
-    bene = Beneficiary.objects.get(Beneficiary , id = id )
+    bene = get_object_or_404(Beneficiary,id = id) 
     bene.delete()
-    return render ('beneficiary:bene_list')
+    return render (request,'bene_list.html')
     
