@@ -84,6 +84,8 @@ def signup_user(request):
             DonorProfile.objects.create(user=user)
             token =Token.objects.get(user=user).key
             data['token'] = token
+            data['id'] = user.id
+
 
 
         else:

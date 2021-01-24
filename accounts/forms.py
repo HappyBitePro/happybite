@@ -12,20 +12,15 @@ user_type = (
 
 
 class SignupForm(UserCreationForm):
-    typee= forms.ChoiceField(choices=user_type)
     class Meta:
         model = User
         fields = [
             'username',
+            'email',
             'password1',
-            'password2',
-            'typee'
+            'password2'
+
         ]
-
-
-
-
-
 
 
 
@@ -33,13 +28,14 @@ class SignupForm(UserCreationForm):
 class CharityUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields= '__all__'
+        fields= fields = ['username','first_name','last_name','email']
 
 
 class CharityProfileForm(forms.ModelForm):
     class Meta:
         model = CharityProfile
         fields = '__all__'
+        exclude = ('Charity_Slug','user')
 
 
 
@@ -47,13 +43,6 @@ class mydonations(forms.ModelForm):
     class Meta:
         model = CharityProfile
         fields = '__all__'
-
-
-
-
-
-
-
 
 
 class DonorUserForm(forms.ModelForm):

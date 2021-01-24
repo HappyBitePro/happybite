@@ -1,6 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
 
 
-{% for foo in donation %}
-{{ foo }}
-{% endfor %}
+    <div>
+        <div class="col-sm-12 ">
+            <div class="row ">
+                <div class="col-4">
+                    <br>
+                    {% block map %}
+                        {% include 'maps/map.html' with lat=donation.lat lang=donation.lang %}
+                    {% endblock map %}
 
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ donation.Name }}</h3>
+                        <table style="width:100%">
+                            <tr>
+                                <th>Donor Profile :</th>
+
+                                <th>{{ donation.donor }}</th>
+                            </tr>
+                            <tr>
+                                <th>Expiry Date :</th>
+
+                                <th>{{ donation.Expiry_Date }}</th>
+                            </tr>
+                            <tr>
+                                <th>Packing Type :</th>
+
+                                <th>{{ donation.Packing_Type }}</th>
+                            </tr>
+                            <tr>
+                                <th>Deliver Type :</th>
+
+                                <th>{{ donation.Deliver_Type }} </th>
+                            </tr>
+                        </table>
+                        <p>
+                        <div class="fw-bolder">Description :</div>
+                        <div>{{ donation.description }}</div>
+                        </p>
+                        <br>
+                        <p class="text-center">
+                            <a class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"
+                               href="{% url 'donation:donor_donation_profile' donation.id %}"> Donor Profile </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}

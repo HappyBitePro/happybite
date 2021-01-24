@@ -8,16 +8,21 @@ from django.dispatch import receiver
 
 from rest_framework.authtoken.models import Token
 
+def image_upload(instance,filename):
+    imagename , extension = filename.split(".")
+    return "license_image/%s.%s"%(instance.id,extension)
+
 
 class CharityProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=25, null=True)
     Charity_Slug = models.SlugField(blank=True, null=True)
     Charity_Phone_Number = PhoneNumberField()
-
-    # Charity_Location
-    # Charity_license img
+    address = models.CharField(max_length=30)
+    license_image = models.ImageField(upload_to=image_upload, default='default.jpg')
 
     def save(self, *args, **kwargs):
+
         if not self.Charity_Slug:
             self.Charity_Slug = slugify(self.user)
         super(CharityProfile, self).save(*args, **kwargs)
@@ -34,6 +39,7 @@ class DonorProfile(models.Model):
     Donar_Employment_Type = models.CharField(max_length=30)
     Donor_Phone_Number = PhoneNumberField()
     address = models.CharField(max_length=30)
+
     # location
 
     def save(self, *args, **kwargs):
@@ -46,13 +52,7 @@ class DonorProfile(models.Model):
         return str(self.user)
 
 
-
-
-
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
-
-
-

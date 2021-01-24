@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('reserve/<int:id>', CharityViews.ReserveDonation, name='ReserveDonation'),
     path('deleteCharity/<int:id>', CharityViews.DeleteDonationCharity, name='DeleteDonationCharity'),
+    path('donationDonor/<int:id>', CharityViews.donor_donation_profile, name='donor_donation_profile'),
 
     path('edit/<int:id>', DonorViews.EditDonationDonor, name='EditDonationDonor'),
     path('deleteDonor/<int:id>', DonorViews.DeleteDonationDonor, name='DeleteDonationDonor'),

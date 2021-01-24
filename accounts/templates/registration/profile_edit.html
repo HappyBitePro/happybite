@@ -1,15 +1,10 @@
-
-
+{% extends 'base.html' %}
+{% load static %}
 {% load bootstrap4 %}
 
-
-    <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1">
-        <div class="container">
-        </div>
-    </div>
-    <!--/ bradcam_area  -->
-
+{% block content %}
+    <br>
+    <br>
     <div class="job_details_area">
         <div class="container">
             <div class="row">
@@ -21,8 +16,10 @@
                             {% bootstrap_form userform %}
                             {% bootstrap_form profileform %}
                             {% buttons %}
-                                
-                                <button class="boxed-btn3 w-100" type="submit">Save</button>
+                                <br>
+
+
+                                <button class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue" type="submit">Save</button>
                             {% endbuttons %}
                         </form>
                     </div>
@@ -30,9 +27,10 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
 
-    
-
+{% endblock %}
 
 
 

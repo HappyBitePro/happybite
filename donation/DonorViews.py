@@ -13,6 +13,7 @@ def AddDonationDonor(request):
         if donation.is_valid():
             donation = donation.save(commit=False)
             donation.donor = donor
+
             donation.save()
             return redirect('donation:donation_list')
     else:
@@ -26,7 +27,7 @@ def EditDonationDonor(request, id):
     if request.method == 'POST':  # to know if user click on add note button
         form = DonationForm(request.POST, instance=donation)
 
-        if form.is_valid():  # to save form in db ## i write this code becuse give the user evry thing to input it (user , slug ...)
+        if form.is_valid():
             new_form = form
             new_form.save()
             return redirect('donation:donation_list')

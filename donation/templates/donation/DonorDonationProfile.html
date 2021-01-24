@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+
+
+
+
+    <div>
+
+        <div class="col-md-8">
+            <div class="card-body">
+                <h3 class="card-title">{{ donor.user.first_name }} {{ donor.user.last_name }}</h3>
+                <table style="width:100%">
+                    <tr>
+                        <th>Email :</th>
+
+                        <th> {{ donor.user.email }}</th>
+                    </tr>
+                    <tr>
+                        <th>Phone number :</th>
+
+                        <th>{{ donor.Donor_Phone_Number }}</th>
+                    </tr>
+                    <tr>
+                        <th>Address :</th>
+
+                        <th> {{ donor.address }} </th>
+                    </tr>
+                    <tr>
+                        <th>User name :</th>
+
+                        <th> {{ donor.user.username }} </th>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                <p class="text-center">
+                    <a class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"
+                       href="{% url 'accounts:CharityDonationView' %}"> Return To My Donation </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,7 +1,8 @@
-
+{% extends 'base.html' %}
+{% load static %}
 {% load bootstrap4 %}
 
-
+{% block content %}
 
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
@@ -16,18 +17,25 @@
         {% endif %}
     {% endif %}
 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 ">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <br>
+                    <br>
+                    {% bootstrap_form form %}
+                    <br>
+                    {% bootstrap_button "login" button_type="submit" button_class="btn-primary" %}
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                </form>
+                <br>
+                <p><a href="{% url 'accounts:password_reset' %}">Lost password?</a></p>
+            </div>
+        </div>
+    </div>    {# Assumes you setup the password_reset view in your URLconf #}
 
 
-    <form action="" method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <br>
-        {% bootstrap_button "login" button_type="submit" button_class="btn-primary" %}
-        <input type="hidden" name="next" value="{{ next }}"/>
-
-    </form>
-    {# Assumes you setup the password_reset view in your URLconf #}
-    <p><a href="{% url 'accounts:password_reset' %}">Lost password?</a></p>
-
+{% endblock content%}
 
 

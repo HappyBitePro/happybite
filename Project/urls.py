@@ -15,11 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('', include('accounts.urls', namespace='accounts')),
     path('donation/', include('donation.urls', namespace='donation')),
     path('beneficiary/', include('beneficiary.urls', namespace='beneficiary')),
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+
 ]
+# Serving static files during developmen
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# Serving files uploaded by a user during development
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

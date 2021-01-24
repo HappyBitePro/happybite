@@ -1,11 +1,39 @@
-
-{{ request.user }}    <br>
-{% for donation in donations %}
-   # <a href="{% url 'donation:donation_detail' donation.id %}">{{donation.Name}}</a>
-   # <a href="{% url 'donation:ReserveDonation' donation.id %}"> resarv </a>
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
 
     <br>
+    <div class="container col-md-6">
+        <p class="card border-dark text-center fw-bolder fs-2" style="color: cornflowerblue ">All Donations</p>
+    </div>
+    <br>
+    <div class="container col-md-6">
+        {% for donation in donations %}
+            <div class="card border-dark ">
+                <div class="card-header text-center fw-bold fs-5 ">
+                    <a class="text-decoration-none" style="color: cornflowerblue"
+                       href="{% url 'donation:donation_detail' donation.id %}">{{ donation.Name }}</a>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title text-center fs-6 "><a>{{ donation.description }}</a></h6>
+                    <div class="card-title text-end fw-light fs-6">
+                        <a>Expiry Date : {{ donation.Expiry_Date }}</a>
+                    </div>
+                    <p class="text-center">
+                        <a class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"
+                           href="{% url 'donation:ReserveDonation' donation.id %}"> resarve </a>
+                    </p>
 
-{% endfor %}
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+
+    </div>
 
 
+
+
+
+{% endblock content %}

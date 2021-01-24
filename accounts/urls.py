@@ -12,7 +12,7 @@ urlpatterns = [
 
     path('signup', views.signup, name='signup'),
 
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logged_out.html'), name='logout'),
 
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
@@ -26,7 +26,7 @@ urlpatterns = [
     # path('signup', views.CharitySignup, name='CharitySignup'),
     path('CharityProfile', views.CharityProfileView, name='CharityProfileView'),
     path('CharityProfile/edit', views.CharityProfileEdit, name='CharityProfileEdit'),
-    path('CharityDonation', views.CharityDonationView, name='mydonations'),
+    path('CharityDonation', views.CharityDonationView, name='CharityDonationView'),
 
     path('DonorDonation', views.DonorDonationView, name='DonorDonation'),
 
@@ -39,10 +39,14 @@ urlpatterns = [
 
 
     path('api/signup', api.signup_user, name='signup_user'),  #
-    path('api/login', obtain_auth_token, name='login'),  #
+    path('api/login', obtain_auth_token, name='apilogin'),  #
     path('api/donorprofileupdate/<int:id>', api.donor_profile_update_api, name='donorprofileedit'),  #
     path('api/userupdate/<int:id>', api.user_update, name='userupdate'),
     path('api/donorprofile/<int:id>', api.donor_profile_api, name='donorprofileapi'),  #
     path('api/userprofile/<int:id>', api.user_profile, name='userprofile'),  #
     path('api/donordonation/<int:id>', api.donor_donation_api, name='donordonation'), #
+
+
+
+
 ]
