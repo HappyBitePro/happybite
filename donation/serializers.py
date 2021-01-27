@@ -19,4 +19,4 @@ class Donation_Add_Serializer(serializers.ModelSerializer):
 class Donation_Update_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Donation
-        fields = ['Name', 'Food_Type', 'Packing_Type', 'Deliver_Type', 'Expiry_Date','lang','lat']
+        fields = ['Name', 'description', 'Packing_Type', 'Deliver_Type', 'Expiry_Date','lang','lat']

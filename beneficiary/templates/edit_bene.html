@@ -1,6 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
-
+{% block content %}
 
 
     <meta charset="UTF-8">
@@ -32,7 +33,7 @@
                                 {% bootstrap_form form %}
                                 {% buttons %}
                                     <br>
-                                      <button class="boxed-btn3 w-100 btn btn-primary" type="submit" href="{% url 'beneficiary:edit_beneficiary' bene.id %}"  >Edit Beneficiary Profile</button>
+                                      <button class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"  type="submit" href="{% url 'beneficiary:edit_beneficiary' bene.id %}"  >Edit Beneficiary Profile</button>
                                 {% endbuttons %}
                             </form>
                     </div>
@@ -41,4 +42,4 @@
         </div>
     </div>
     <br>
-    <
+    {% endblock content %}

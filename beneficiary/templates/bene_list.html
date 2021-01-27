@@ -35,12 +35,12 @@
                                             <div>
                                                 <div class="row">
                                                     <div class="col-9">
-                                                        <a href="{% url 'beneficiary:bene_detail' bene.id %}">{{ bene.name }}</a>
+                                                        <a class="text-decoration-none fw-bolder" style="color: cornflowerblue" href="{% url 'beneficiary:bene_detail' bene.id %}">{{ bene.name }}</a>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a
+                                                        <a class="nav-item btn btn btn-light"style="color: cornflowerblue"
                                                                 href="{% url 'beneficiary:edit_beneficiary' bene.id %}">edit</a>
-                                                        <a
+                                                        <a class="nav-item btn btn btn-light"style="color: cornflowerblue"
                                                                 href="{% url 'beneficiary:delete_beneficiary' bene.id %}">delete</a>
                                                     </div>
                                                 </div>

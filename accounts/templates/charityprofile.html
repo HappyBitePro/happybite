@@ -11,12 +11,16 @@
             <div class="row ">
                 <div class="col-4 gmap_canvas" >
                     <br>
-                    <img src="{{ profile.license_image.url }}">
+                    <img class="img-responsive " style="height: 400px ;width: 400px" src="{{ profile.license_image.url }} ">
 
 
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
+                        <br>
+                        <br>
+                        <br>
+
                         <h3 class="card-title">{{ profile.name }}</h3>
                         <table style="width:100%">
                             <tr>
@@ -41,20 +45,24 @@
                             </tr>
                         </table>
                         <br>
-                        <p class="text-center">
+                        <p class="text-center col-md-8">
                             <a class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"
                                href="{% url 'accounts:CharityProfileEdit' %}"> Edit Profile </a>
                         </p>
+                        <br>
+                        <p class="text-center col-md-8">
+                            <a class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"
+                               href="{% url 'accounts:password_change' %}"> Change Password </a>
+                        </p>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<br>
+<br>
 
-        <style>
+<br>
 
-    .gmap_canvas {
-        height: 400px;
-        width: 300px;
-    }</style>
 {% endblock content %}

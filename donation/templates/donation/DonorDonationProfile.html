@@ -6,10 +6,14 @@
 
 
 
-    <div>
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-2">
 
-        <div class="col-md-8">
-            <div class="card-body">
+    </div>
+    <div class="col-sm-10">
+        <br>
+        <br>
                 <h3 class="card-title">{{ donor.user.first_name }} {{ donor.user.last_name }}</h3>
                 <table style="width:100%">
                     <tr>
@@ -35,12 +39,15 @@
                 </table>
                 <br>
                 <br>
-                <p class="text-center">
+                <p class="text-center col-8">
                     <a class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"
                        href="{% url 'accounts:CharityDonationView' %}"> Return To My Donation </a>
                 </p>
             </div>
-        </div>
+    <div class="col-sm-2">
+
     </div>
+  </div>
+</div>
 
 {% endblock content %}

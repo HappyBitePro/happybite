@@ -9,13 +9,14 @@ from django.contrib.auth.decorators import login_required
 def all_beneficiary(request):
     charity = get_object_or_404(CharityProfile, user=request.user)
     bene_list = Beneficiary.objects.filter(user_id=charity.id)
-    ben =bene_form()
-    if request.method =='POST':
+    ben = bene_form()
+    if request.method == 'POST':
         add_beneficiary(request)
     context = {'bene_list': bene_list,
-               'ben':ben
+               'ben': ben
                }
     return render(request, 'bene_list.html', context)
+
 
 @login_required
 def beneficiary_detail(request, id):
@@ -25,6 +26,7 @@ def beneficiary_detail(request, id):
 
     }
     return render(request, 'bene_detail.html', context)
+
 
 @login_required
 def add_beneficiary(request):
@@ -45,6 +47,7 @@ def add_beneficiary(request):
     }
     return render(request, 'add_bene.html', context)
 
+
 @login_required
 def edit_beneficiary(request, id):
     bene = get_object_or_404(Beneficiary, id=id)
@@ -56,7 +59,8 @@ def edit_beneficiary(request, id):
             return redirect('beneficiary:bene_list')
     else:
         form = bene_form(instance=bene)
-    return render(request, 'edit_bene.html', {'form': form ,'bene': bene})
+    return render(request, 'edit_bene.html', {'form': form, 'bene': bene})
+
 
 @login_required
 def delete_beneficiary(request, id):

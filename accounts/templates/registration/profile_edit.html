@@ -5,30 +5,30 @@
 {% block content %}
     <br>
     <br>
-    <div class="job_details_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="apply_job_form white-bg">
-                        <h4>Edit Profile</h4>
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {% bootstrap_form userform %}
-                            {% bootstrap_form profileform %}
-                            {% buttons %}
-                                <br>
-
-
-                                <button class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue" type="submit">Save</button>
-                            {% endbuttons %}
-                        </form>
-                    </div>
-                </div>
+    <div class="container col-md-12">
+        <div class="row">
+            <div class="col-sm-3">
             </div>
+            <div class="col-sm-6">
+                <br>
+                <br>
+                <h4>Edit Profile</h4>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form userform %}
+                    {% bootstrap_form profileform %}
+                    {% buttons %}
+                        <br>
+                        <button class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"  type="submit">Edit </button>
+                    {% endbuttons %}
+                </form>
+            </div>
+            <div class="col-sm-3"></div>
         </div>
+        <br>
+        <br>
+        <br>
     </div>
-    <br>
-    <br>
 
 {% endblock %}
 

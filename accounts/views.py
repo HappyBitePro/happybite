@@ -63,6 +63,9 @@ def CharityDonationView(request):
     charityDonation = Donation.objects.filter(charity_id=charity.id)
     return render(request, 'CharityDonation.html', {'charity': charity, 'charityDonation': charityDonation})
 
+
+
+
 @login_required
 def DonorProfileView(request):
     Donor_Profile = DonorProfile.objects.get(user=request.user)

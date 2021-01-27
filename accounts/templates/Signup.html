@@ -2,6 +2,9 @@
 {% load static %}
 {% load bootstrap4 %}
 {% block content %}
+    <br>
+    <br>
+    <br>
 
 <div class="container">
     <div class="row">
@@ -10,8 +13,13 @@
             <form method="post" >
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                <button type="submit">Sign up</button>
+                <br>
+                <button type="submit" class="btn btn-primary">Sign up</button>
             </form>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 </div>

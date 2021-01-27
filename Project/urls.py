@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('accounts.urls', namespace='accounts')),
+    path('', include('django.contrib.auth.urls')),
     path('donation/', include('donation.urls', namespace='donation')),
     path('beneficiary/', include('beneficiary.urls', namespace='beneficiary')),
     path('admin/', admin.site.urls),

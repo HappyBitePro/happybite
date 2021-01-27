@@ -14,7 +14,7 @@ from donation.models import Donation
 class Donation_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Donation
-        fields = ['id', 'charity', 'Name', 'Food_Type', 'Packing_Type', 'Deliver_Type', 'Expiry_Date','Available']
+        fields = ['id', 'charity', 'Name', 'description', 'Packing_Type', 'Deliver_Type', 'Expiry_Date','Available']
 
 
 class Donor_User_Serializer(serializers.ModelSerializer):
