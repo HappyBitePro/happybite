@@ -13,13 +13,15 @@
                 <br>
                 <br>
                 <h4>Edit Profile</h4>
-                <form method="POST" enctype="multipart/form-data">
+                <form action="" method="post">
                     {% csrf_token %}
                     {% bootstrap_form userform %}
                     {% bootstrap_form profileform %}
                     {% buttons %}
                         <br>
-                        <button class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"  type="submit">Edit </button>
+                        <button class="form-control text-decoration-none fw-bolder fs-5" style="color: cornflowerblue"
+                                type="submit" href="{% url 'accounts:CharityProfileView' %}">Edit
+                        </button>
                     {% endbuttons %}
                 </form>
             </div>

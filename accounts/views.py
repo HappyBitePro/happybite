@@ -7,8 +7,8 @@ from .models import CharityProfile, DonorProfile
 from donation.models import Donation
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 
+# Create your views here.
 
 
 def signup(request):
@@ -29,11 +29,13 @@ def signup(request):
         form = SignupForm()
     return render(request, 'Signup.html', {'form': form})
 
+
 @login_required
 def CharityProfileView(request):
     Charity_Profile = CharityProfile.objects.get(user=request.user)
     donation = Donation.objects.filter(charity_id=Charity_Profile.id)
     return render(request, 'charityprofile.html', {'profile': Charity_Profile, 'donation': donation})
+
 
 @login_required
 def CharityProfileEdit(request):
@@ -47,7 +49,7 @@ def CharityProfileEdit(request):
             myprofile = profileform.save(commit=False)
             myprofile.user = request.user
             myprofile.save()
-            return redirect(reverse('accounts:CharityProfileEdit'))
+            return redirect(reverse('accounts:CharityProfileView'))
 
     else:
         userform = CharityUserForm(instance=request.user)
@@ -56,20 +58,17 @@ def CharityProfileEdit(request):
     return render(request, 'registration/profile_edit.html',
                   {'userform': userform, 'profileform': profileform})
 
+
 @login_required
 def CharityDonationView(request):
-
     charity = get_object_or_404(CharityProfile, user=request.user)
     charityDonation = Donation.objects.filter(charity_id=charity.id)
     return render(request, 'CharityDonation.html', {'charity': charity, 'charityDonation': charityDonation})
 
 
-
-
 @login_required
 def DonorProfileView(request):
     Donor_Profile = DonorProfile.objects.get(user=request.user)
-
     return render(request, 'donorprofile.html', {'profile': Donor_Profile})
 
 
@@ -98,14 +97,4 @@ def DonorDonationView(request):
     donar = get_object_or_404(DonorProfile, user=request.user)
     donar_Donation = Donation.objects.filter(donor_id=donar.id)
 
-    return render(
-        request,
-        'donordonation.html',
-        {
-            'donar':donar,
-            'donar_Donation':donar_Donation,
-        }
-                )
-
-
-
+    return render(request, 'donordonation.html', {'donar': donar, 'donar_Donation': donar_Donation, })

@@ -5,10 +5,11 @@
     <br>
     <br>
     <br>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="container col-md-12">
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
             <h2>Sign up Form</h2>
             <form method="post" >
                 {% csrf_token %}
@@ -20,7 +21,11 @@
             <br>
             <br>
             <br>
+            </div>
+            <div class="col-sm-3"></div>
         </div>
+        <br>
+        <br>
+        <br>
     </div>
-</div>
 {% endblock content %}
