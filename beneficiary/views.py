@@ -64,5 +64,5 @@ def edit_beneficiary(request, id):
 
 @login_required
 def delete_beneficiary(request, id):
-    bene = get_object_or_404(Beneficiary, id=id).delete()
+    get_object_or_404(Beneficiary, id=id).delete()
     return redirect('beneficiary:bene_list')

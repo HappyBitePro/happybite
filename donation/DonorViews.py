@@ -5,43 +5,44 @@ from django.urls import reverse
 from .models import DonorProfile
 
 
-def AddDonationDonor(request):
-    donor = get_object_or_404(DonorProfile, user=request.user)
-
-    if request.method == 'POST':
-        donation = DonationForm(request.POST, request.FILES)
-        if donation.is_valid():
-            donation = donation.save(commit=False)
-            donation.donor = donor
-
-            donation.save()
-            return redirect('donation:donation_list')
-    else:
-        form = DonationForm()
-        return render(request, 'donation/AddDonation.html', {'form': form})
-
-
-def EditDonationDonor(request, id):
-    donor = get_object_or_404(DonorProfile, user=request.user)
-    donation = get_object_or_404(Donation, id=id)
-    if request.method == 'POST':  # to know if user click on add note button
-        form = DonationForm(request.POST, instance=donation)
-
-        if form.is_valid():
-            new_form = form
-            new_form.save()
-            return redirect('donation:donation_list')
-
-    else:
-        form = DonationForm(instance=donation)
-
-    context = {
-        'form': form
-    }
-    return render(request, 'donation/AddDonation.html', context)
-
-
-def DeleteDonationDonor(request, id):
-    donor = get_object_or_404(DonorProfile, user=request.user)
-    donation = get_object_or_404(Donation, id=id).delete()
-    return redirect('accounts:DonorDonation')
+# def AddDonationDonor(request):
+#     donor = get_object_or_404(DonorProfile, user=request.user)
+#
+#     if request.method == 'POST':
+#         donation = DonationForm(request.POST, request.FILES)
+#         if donation.is_valid():
+#             donation = donation.save(commit=False)
+#             donation.donor = donor
+#
+#             donation.save()
+#             return redirect('donation:donation_list')
+#     else:
+#         form = DonationForm()
+#         return render(request, 'donation/AddDonation.html', {'form': form})
+#
+#
+# def EditDonationDonor(request, id):
+#     donor = get_object_or_404(DonorProfile, user=request.user)
+#     donation = get_object_or_404(Donation, id=id)
+#     if request.method == 'POST':  # to know if user click on add note button
+#         form = DonationForm(request.POST, instance=donation)
+#
+#         if form.is_valid():
+#             new_form = form
+#             new_form.save()
+#             return redirect('donation:donation_list')
+#
+#     else:
+#         form = DonationForm(instance=donation)
+#
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'donation/AddDonation.html', context)
+#
+#
+# def DeleteDonationDonor(request, id):
+#     donor = get_object_or_404(DonorProfile, user=request.user)
+#     donation = get_object_or_404(Donation, id=id).delete()
+#     return redirect('accounts:DonorDonation')
+#

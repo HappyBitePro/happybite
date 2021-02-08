@@ -29,14 +29,15 @@ class Donation(models.Model):
     Expiry_Date = models.DateTimeField()
     Available = models.BooleanField(default=True)
 
-    lang = models.FloatField(max_length=15,null=True)
-    lat = models.FloatField(max_length=15,null=True)
+    lang = models.FloatField(max_length=15, null=True)
+    lat = models.FloatField(max_length=15, null=True)
 
     def save(self, *args, **kwargs):
         if not self.Slug:
             self.Slug = slugify(self.Name)
         super(Donation, self).save(*args, **kwargs)
 
+    @property
     def __str__(self):
         self.expiry_date_delete
         return self.Name

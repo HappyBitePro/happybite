@@ -2,8 +2,8 @@ from django.contrib.auth import authenticate, login
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from .forms import SignupForm, CharityUserForm, CharityProfileForm, mydonations, DonorUserForm, DonorProfileForm
-from .models import CharityProfile, DonorProfile
+from .forms import SignupForm, CharityUserForm, CharityProfileForm, DonorUserForm, DonorProfileForm
+from .models import CharityProfile
 from donation.models import Donation
 from django.contrib.auth.decorators import login_required
 
@@ -66,35 +66,35 @@ def CharityDonationView(request):
     return render(request, 'CharityDonation.html', {'charity': charity, 'charityDonation': charityDonation})
 
 
-@login_required
-def DonorProfileView(request):
-    Donor_Profile = DonorProfile.objects.get(user=request.user)
-    return render(request, 'donorprofile.html', {'profile': Donor_Profile})
-
-
-def DonorProfileEdit(request):
-    Donor_Profile = DonorProfile.objects.get(user=request.user)
-
-    if request.method == 'POST':
-        userform = DonorUserForm(request.POST, instance=request.user)
-        profileform = DonorProfileForm(request.POST, request.FILES, instance=Donor_Profile)
-        if DonorUserForm.is_valid() and DonorProfileForm.is_valid():
-            DonorUserForm.save()
-            myprofile = DonorProfileForm.save(commit=False)
-            myprofile.user = request.user
-            myprofile.save()
-            return redirect(reverse('registration:profile'))
-
-    else:
-        userform = DonorUserForm(instance=request.user)
-        profileform = DonorProfileForm(instance=Donor_Profile)
-
-    return render(request, 'registration/profile_edit.html',
-                  {'userform': DonorUserForm, 'profileform': DonorProfileForm})
-
-
-def DonorDonationView(request):
-    donar = get_object_or_404(DonorProfile, user=request.user)
-    donar_Donation = Donation.objects.filter(donor_id=donar.id)
-
-    return render(request, 'donordonation.html', {'donar': donar, 'donar_Donation': donar_Donation, })
+# @login_required
+# def DonorProfileView(request):
+#     Donor_Profile = DonorProfile.objects.get(user=request.user)
+#     return render(request, 'donorprofile.html', {'profile': Donor_Profile})
+#
+#
+# def DonorProfileEdit(request):
+#     Donor_Profile = DonorProfile.objects.get(user=request.user)
+#
+#     if request.method == 'POST':
+#         userform = DonorUserForm(request.POST, instance=request.user)
+#         profileform = DonorProfileForm(request.POST, request.FILES, instance=Donor_Profile)
+#         if DonorUserForm.is_valid() and DonorProfileForm.is_valid():
+#             DonorUserForm.save()
+#             myprofile = DonorProfileForm.save(commit=False)
+#             myprofile.user = request.user
+#             myprofile.save()
+#             return redirect(reverse('registration:profile'))
+#
+#     else:
+#         userform = DonorUserForm(instance=request.user)
+#         profileform = DonorProfileForm(instance=Donor_Profile)
+#
+#     return render(request, 'registration/profile_edit.html',
+#                   {'userform': DonorUserForm, 'profileform': DonorProfileForm})
+#
+#
+# def DonorDonationView(request):
+#     donar = get_object_or_404(DonorProfile, user=request.user)
+#     donar_Donation = Donation.objects.filter(donor_id=donar.id)
+#
+#     return render(request, 'donordonation.html', {'donar': donar, 'donar_Donation': donar_Donation, })

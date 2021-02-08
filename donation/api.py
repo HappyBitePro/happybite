@@ -1,13 +1,8 @@
-from django.contrib.auth import authenticate
 from rest_framework import status
-
-from accounts.models import *
 from .serializers import *
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authtoken.models import Token
-from django.shortcuts import get_object_or_404
+from rest_framework.decorators import api_view
+
 
 
 @api_view(['POST'])

@@ -1,10 +1,7 @@
+
+from .models import Donation
 from django.shortcuts import render
 
-from .forms import DonationForm
-from .models import Donation
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
-from .models import CharityProfile, DonorProfile
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.

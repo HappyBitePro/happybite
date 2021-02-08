@@ -29,10 +29,10 @@ urlpatterns = [
     path('CharityProfile/edit', views.CharityProfileEdit, name='CharityProfileEdit'),
     path('CharityDonation', views.CharityDonationView, name='CharityDonationView'),
 
-    path('DonorDonation', views.DonorDonationView, name='DonorDonation'),
-
-    path('donorProfile', views.DonorProfileView, name='DonorProfileView'),
-    path('donorProfile/edit', views.DonorProfileEdit, name='DonorProfileEdit'),
+    # path('DonorDonation', views.DonorDonationView, name='DonorDonation'),
+    #
+    # path('donorProfile', views.DonorProfileView, name='DonorProfileView'),
+    # path('donorProfile/edit', views.DonorProfileEdit, name='DonorProfileEdit'),
 
 
 

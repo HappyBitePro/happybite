@@ -12,9 +12,9 @@ urlpatterns = [
     path('deleteCharity/<int:id>', CharityViews.DeleteDonationCharity, name='DeleteDonationCharity'),
     path('donationDonor/<int:id>', CharityViews.donor_donation_profile, name='donor_donation_profile'),
 
-    path('edit/<int:id>', DonorViews.EditDonationDonor, name='EditDonationDonor'),
-    path('deleteDonor/<int:id>', DonorViews.DeleteDonationDonor, name='DeleteDonationDonor'),
-    path('add/', DonorViews.AddDonationDonor, name='AddDonationDonor'),
+    # path('edit/<int:id>', DonorViews.EditDonationDonor, name='EditDonationDonor'),
+    # path('deleteDonor/<int:id>', DonorViews.DeleteDonationDonor, name='DeleteDonationDonor'),
+    # path('add/', DonorViews.AddDonationDonor, name='AddDonationDonor'),
 
     path('map/<int:id>', views.mapDonation, name='map'),
 

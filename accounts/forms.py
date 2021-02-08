@@ -39,12 +39,6 @@ class CharityProfileForm(forms.ModelForm):
 
 
 
-class mydonations(forms.ModelForm):
-    class Meta:
-        model = CharityProfile
-        fields = '__all__'
-
-
 class DonorUserForm(forms.ModelForm):
     class Meta:
         model = User
